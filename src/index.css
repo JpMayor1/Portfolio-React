@@ -28,8 +28,8 @@ body {
 
 /* Define the vertical scrollbar thumb style */
 ::-webkit-scrollbar-thumb {
-    background: #40a2d8;
+    background: #f5f7f8;
     border-radius: 6px;
     border: 2px solid #151515;
-    cursor: grab;
+    cursor: n-resize;
 }
