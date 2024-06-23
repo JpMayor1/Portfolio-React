@@ -5,11 +5,15 @@ export default {
     theme: {
         colors: {
             black: "#151515",
-            white: "#ffffff",
+            white: "#F5F7F8",
             primary: "#58287F",
             secondary: "#40A2D8",
         },
-        extend: {},
+        extend: {
+            fontFamily: {
+                montserrat: ["Montserrat", "sans-serif"],
+            },
+        },
     },
     plugins: [],
 };

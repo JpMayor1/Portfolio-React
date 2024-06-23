@@ -12,6 +12,7 @@
 html,
 body {
     overflow-x: hidden;
+    font-family: "Montserrat", sans-serif;
 }
 
 /* Hide the scrollbar by default for both axes */
