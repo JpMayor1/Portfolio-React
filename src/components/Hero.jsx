@@ -4,14 +4,14 @@ import { ContactIcon, LinkArrow } from "./icons/icons";
 
 const Hero = () => {
     return (
-        <main className="flex items-center text-dark w-full min-h-screen dark:text-white">
-            <Layout className="pt-16">
+        <main className="flex items-center text-dark w-full h-full dark:text-white">
+            <Layout className="pt-28 md:pt-24">
                 <div className="flex items-center justify-center w-full flex-col lg:flex-row lg:mt-3">
-                    <div className="w-full mr-0 md:w-1/2">
+                    <div className="w-full md:w-1/2">
                         <img
-                            src="/programmer.jpg"
+                            src="/Graduate.png"
                             alt="Programmer"
-                            className="w-full h-auto rounded-full lg:inline-block lg:w-[85%]"
+                            className="w-full h-auto rounded-full lg:inline-block lg:w-[88%]"
                         />
                     </div>
                     <div className="w-full lg:w-1/2 flex flex-col items-center self-center text-center lg:text-left mt-5 lg:mt-0">
