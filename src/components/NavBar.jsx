@@ -162,11 +162,6 @@ const NavBar = () => {
                         title="Projets"
                         className="ml-4"
                     />
-                    <CustomLink
-                        href="/#contact"
-                        title="Contact"
-                        className="ml-4"
-                    />
                 </nav>
             </div>
 
@@ -287,11 +282,6 @@ const NavBar = () => {
                         <CustomMobileLink
                             href="/#projects"
                             title="Projets"
-                            toggle={handleClick}
-                        />
-                        <CustomMobileLink
-                            href="/#contact"
-                            title="Contact"
                             toggle={handleClick}
                         />
                     </nav>
