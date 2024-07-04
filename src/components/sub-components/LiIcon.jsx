@@ -18,7 +18,7 @@ const LiIcon = ({ reference }) => {
                     cx="75"
                     cy="50"
                     r="20"
-                    className="stroke-secondary stroke-1 fill-none dark:stroke-primaryDark"
+                    className="stroke-primary stroke-1 fill-none dark:stroke-secondary"
                 />
                 <motion.circle
                     style={{
@@ -33,7 +33,7 @@ const LiIcon = ({ reference }) => {
                     cx="75"
                     cy="50"
                     r="10"
-                    className="stroke-1 fill-secondary animate-pulse dark:fill-primaryDark"
+                    className="stroke-1 fill-primary animate-pulse dark:fill-secondary"
                 />
             </svg>
         </figure>
