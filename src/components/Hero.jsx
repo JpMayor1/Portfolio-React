@@ -17,7 +17,7 @@ const Hero = () => {
                     <div className="w-full lg:w-1/2 flex flex-col items-center self-center text-center lg:text-left mt-5 lg:mt-0">
                         <AnimatedText
                             text="Transforming Ideas into Functional Websites."
-                            className=" text-left"
+                            className="lg:text-left"
                         />
 
                         <p className="my-4 text-xs sm:text-sm md:text-base font-medium cursor-default">

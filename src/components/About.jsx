@@ -3,11 +3,14 @@ import Layout from "./sub-components/Layout";
 
 const About = () => {
     return (
-        <main className="flex w-full flex-col items-center justify-center dark:text-white">
+        <main
+            id="about"
+            className="flex w-full flex-col items-center justify-center dark:text-white"
+        >
             <Layout className="pt-16">
                 <AnimatedText
                     text="Hi there! My name is James Phillip Mayor, Full-stack Developer."
-                    className="mb-16 sm:mb-8"
+                    className="mb-8 text-center"
                 />
                 <div className="grid w-full grid-cols-8 gap-8">
                     <div className="col-span-8 md:col-span-4 flex flex-col items-start justify-start">
