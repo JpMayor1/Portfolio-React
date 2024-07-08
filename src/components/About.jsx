@@ -18,6 +18,16 @@ const About = () => {
                             About Me
                         </h2>
                         <p className="my-4 font-medium cursor-default">
+                            I began programming on September 1, 2022, and
+                            I&apos;ve developed a passion for web development. I
+                            enjoy creating entire websites, from the front-end
+                            interface to the back-end systems. I&apos;ve created
+                            CRUD applications like E-Commerce and Appointment
+                            mobile apps, and I&apos;m excited to use my skills
+                            to build more user-friendly and visually appealing
+                            websites.
+                        </p>
+                        <p className="my-4 font-medium cursor-default">
                             I&apos;m passionate about creating dynamic,
                             user-friendly web applications that help businesses
                             and individuals achieve their goals. As a full-stack
