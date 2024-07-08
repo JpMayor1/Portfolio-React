@@ -5,7 +5,7 @@ import { GithubIcon } from "./icons/icons";
 
 const FeaturedProject = ({ type, title, summary, img, link, github }) => {
     return (
-        <article className="w-full flex items-center justify-between  border border-solid border-black bg-white shadow-2xl dark:bg-black dark:border-white flex-col lg:flex-row sm:p-8 lg:p-12 rounded-2xl sm:rounded-3xl sm:rounded-br-3xl p-4">
+        <article className="w-full flex items-center justify-between  border border-solid border-black bg-white shadow-xl dark:bg-black dark:border-white flex-col lg:flex-row sm:p-8 lg:p-12 rounded-2xl sm:rounded-3xl sm:rounded-br-3xl p-4">
             <a
                 href={link}
                 target="_blank"
@@ -48,7 +48,10 @@ const FeaturedProject = ({ type, title, summary, img, link, github }) => {
 
 const Projects = () => {
     return (
-        <main id="projects" className="w-full mb-16 flex flex-col items-center justify-center dark:text-white">
+        <main
+            id="projects"
+            className="w-full mb-16 flex flex-col items-center justify-center dark:text-white"
+        >
             <Layout className="pt-16">
                 <AnimatedText
                     text="My latest and greatest creations"
@@ -64,6 +67,18 @@ const Projects = () => {
                             }
                             link={"https://khoveterinaryclinic.netlify.app/"}
                             github="https://github.com/JpMayor1/khoveterinaryclinic"
+                            type="Featured Project"
+                        />
+                    </div>
+                    <div className="col-span-12 mt-8">
+                        <FeaturedProject
+                            title={"E-commerce Pizza Platform"}
+                            img="/mern-pizza.png"
+                            summary={
+                                "I created an e-commerce pizza platform utilizing the MERN stack, Tailwind CSS, and TypeScript. This sophisticated application provides a smooth user experience for browsing, customizing, and ordering pizza. It has user authentication, a dynamic shopping cart, order status, and an easy-to-use admin dashboard for inventory and order management. Tailwind CSS assures responsive design, while TypeScript improves code reliability and maintainability. This project demonstrates my proficiency with full-stack programming and contemporary web technologies. Here are the accounts you can use to login: Admin {email: admin@gmail.com, password: 123}, User {email: user@gmail.com, password: 123}. Please note that the server may take a few minutes to load due to Render's free tier. Also Please don't make any necessary changes to the data. Thank you!"
+                            }
+                            link={"https://mern-pizza.netlify.app/"}
+                            github="https://github.com/JpMayor1/MERN-TS-TAILWINDCSS-Ecommerce-vite-public"
                             type="Featured Project"
                         />
                     </div>
