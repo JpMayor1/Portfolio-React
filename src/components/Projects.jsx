@@ -48,7 +48,7 @@ const FeaturedProject = ({ type, title, summary, img, link, github }) => {
 
 const Projects = () => {
     return (
-        <main className="w-full mb-16 flex flex-col items-center justify-center dark:text-white">
+        <main id="projects" className="w-full mb-16 flex flex-col items-center justify-center dark:text-white">
             <Layout className="pt-16">
                 <AnimatedText
                     text="My latest and greatest creations"

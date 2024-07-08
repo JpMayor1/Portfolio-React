@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import {
     FacebookIcon,
     GithubIcon,
@@ -9,19 +9,15 @@ import {
     TiktokIcon,
 } from "./icons/icons";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { useLocation } from "react-router-dom";
 import useThemeSwitcher from "../hooks/useThemeSwitcher";
 
-const CustomLink = ({ href, title, className = "" }) => {
-    const location = useLocation();
-    const fullPath = location.pathname + location.hash;
-
+const CustomLink = ({ href, title, className = "", isActive }) => {
     return (
         <a href={href} className={`${className} relative group`}>
             {title}
             <span
                 className={`h-[1px] inline-block dark:bg-white  bg-black absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${
-                    fullPath.startsWith(href) ? "w-full" : "w-0"
+                    isActive ? "w-full" : "w-0"
                 }`}
             >
                 &nbsp;
@@ -30,7 +26,13 @@ const CustomLink = ({ href, title, className = "" }) => {
     );
 };
 
-const CustomMobileLink = ({ href, title, className = "", toggle }) => {
+const CustomMobileLink = ({
+    href,
+    title,
+    className = "",
+    isActive,
+    toggle,
+}) => {
     const handleClick = () => {
         toggle();
     };
@@ -43,8 +45,8 @@ const CustomMobileLink = ({ href, title, className = "", toggle }) => {
         >
             {title}
             <span
-                className={`h-[1px] inline-block dark:bg-black  bg-white absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${
-                    location.pathname === href ? "w-full" : "w-0"
+                className={`h-[1px] inline-block dark:bg-black bg-white absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${
+                    isActive ? "w-full" : "w-0"
                 }`}
             >
                 &nbsp;
@@ -58,6 +60,40 @@ const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { scrollY } = useScroll();
     const [mode, setMode] = useThemeSwitcher();
+    const [activeSection, setActiveSection] = useState("");
+
+    const sections = useMemo(
+        () => [
+            { id: "home", label: "Home" },
+            { id: "about", label: "About" },
+            { id: "skills", label: "Skills" },
+            { id: "projects", label: "Projects" },
+        ],
+        []
+    );
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const sectionElements = sections.map((section) =>
+                document.getElementById(section.id)
+            );
+            const currentSection = sectionElements.find(
+                (section) =>
+                    section.getBoundingClientRect().top <=
+                        window.innerHeight / 2 &&
+                    section.getBoundingClientRect().bottom >=
+                        window.innerHeight / 2
+            );
+            if (currentSection) {
+                setActiveSection(currentSection.id);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, [sections]);
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         const previous = scrollY.getPrevious();
@@ -80,7 +116,6 @@ const NavBar = () => {
             className="fixed top-0 w-full lg:px-32 px-8 py-8 font-medium flex items-center justify-center dark:text-white z-10 bg-white dark:bg-black shadow-md transition-all duration-300 ease-out"
         >
             {/* Laptop/Desktop Menu */}
-
             <div className="relative w-full justify-between items-center hidden lg:flex">
                 {/* Social Media */}
                 <nav className="flex items-center justify-center flex-wrap z-30">
@@ -151,22 +186,19 @@ const NavBar = () => {
                 </motion.div>
 
                 <nav>
-                    <CustomLink href="/#about" title="About" className="mx-4" />
-                    <CustomLink
-                        href="/#skills"
-                        title="Skills"
-                        className="mx-4"
-                    />
-                    <CustomLink
-                        href="/#projects"
-                        title="Projets"
-                        className="ml-4"
-                    />
+                    {sections.map((section) => (
+                        <CustomLink
+                            key={section.id}
+                            href={`/#${section.id}`}
+                            title={section.label}
+                            className="mx-4"
+                            isActive={activeSection === section.id}
+                        />
+                    ))}
                 </nav>
             </div>
 
-            {/* Mobile Meu */}
-
+            {/* Mobile Menu */}
             <div className="relative w-full lg:hidden">
                 <button
                     className="flex flex-col justify-center items-center lg:hidden mt-2"
@@ -269,21 +301,16 @@ const NavBar = () => {
                         </motion.a>
                     </nav>
                     <nav className="flex items-center flex-col justify-center ">
-                        <CustomMobileLink
-                            href="/#about"
-                            title="About"
-                            toggle={handleClick}
-                        />
-                        <CustomMobileLink
-                            href="/#skills"
-                            title="Skills"
-                            toggle={handleClick}
-                        />
-                        <CustomMobileLink
-                            href="/#projects"
-                            title="Projets"
-                            toggle={handleClick}
-                        />
+                        {sections.map((section) => (
+                            <CustomMobileLink
+                                key={section.id}
+                                href={`/#${section.id}`}
+                                title={section.label}
+                                className="mx-4"
+                                isActive={activeSection === section.id}
+                                toggle={handleClick}
+                            />
+                        ))}
                     </nav>
                 </motion.div>
             )}

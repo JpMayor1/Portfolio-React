@@ -4,7 +4,7 @@ import { ContactIcon, LinkArrow } from "./icons/icons";
 
 const Hero = () => {
     return (
-        <main className="flex items-center text-dark w-full h-full dark:text-white">
+        <main id="home" className="flex items-center text-dark w-full h-full dark:text-white">
             <Layout className="pt-28 md:pt-24">
                 <div className="flex items-center justify-center w-full flex-col lg:flex-row lg:mt-3">
                     <div className="w-full md:w-1/2">

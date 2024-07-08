@@ -36,7 +36,10 @@ const Skills = () => {
         offset: ["start center", "center start"],
     });
     return (
-        <main className="flex items-center text-black w-screen min-h-screen dark:text-white text-center">
+        <main
+            id="skills"
+            className="flex items-center text-black w-screen min-h-screen dark:text-white text-center"
+        >
             <Layout className="pt-16">
                 <AnimatedText
                     text="Expertise to help bring your ideas to life"

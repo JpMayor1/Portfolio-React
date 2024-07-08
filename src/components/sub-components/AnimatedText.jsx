@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
-
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 
 const quote = {
     initial: {
@@ -30,13 +31,27 @@ const singleWord = {
 };
 
 const AnimatedText = ({ text, className = "" }) => {
+    const controls = useAnimation();
+    const [ref, inView] = useInView({ threshold: 0.1 });
+
+    useEffect(() => {
+        if (inView) {
+            controls.start("animate");
+        } else {
+            controls.start("initial");
+        }
+    }, [controls, inView]);
+
     return (
-        <div className="w-full mx-auto py-0 sm:py-2 flex items-center justify-center text-center overflow-hidden cursor-default">
+        <div
+            ref={ref}
+            className="w-full mx-auto py-0 sm:py-2 flex items-center justify-center text-center overflow-hidden cursor-default"
+        >
             <motion.h1
                 variants={quote}
                 initial="initial"
-                animate="animate"
-                className={` inline-block w-full text-black font-bold capitalize text-3xl sm:text-5xl text-center dark:text-white ${className}`}
+                animate={controls}
+                className={`inline-block w-full text-black font-bold capitalize text-3xl sm:text-5xl text-center dark:text-white ${className}`}
             >
                 {text.split(" ").map((word, index) => (
                     <motion.span
