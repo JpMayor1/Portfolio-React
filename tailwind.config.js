@@ -9,6 +9,8 @@ export default {
             primary: "#58287F",
             secondary: "#40A2D8",
             primaryDark: "#58E6D9",
+            yellow: "#F7DF1E",
+            typescript: "#007ACC",
         },
         extend: {
             fontFamily: {
